@@ -822,12 +822,12 @@
     }
 
     function toggleShopSidebar() {
-      document.getElementById('shopSidebar').classList.toggle('open');
-      document.getElementById('sidebarOverlay').classList.toggle('open');
-      const closeBtn = document.querySelector('.sidebar-close-btn');
-      if (closeBtn) {
-        closeBtn.style.display = document.getElementById('shopSidebar').classList.contains('open') && window.innerWidth < 768 ? 'block' : 'none';
-      }
+      const sidebar = document.getElementById('shopSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const isOpen = !sidebar.classList.contains('open');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('open');
+      document.body.classList.toggle('sidebar-open', isOpen);
     }
 
     function filterBrand(brand) {

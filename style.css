@@ -2341,25 +2341,59 @@
       }
 
       .shop-sidebar {
-        display: none;
         position: fixed;
         top: 0;
         left: 0;
         width: 300px;
+        max-width: 85vw;
         height: 100%;
         z-index: 3000;
         overflow-y: auto;
         border-radius: 0;
         border: none;
-        padding: var(--spacing-sm)
+        padding: var(--spacing-sm);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 20px rgba(0,0,0,0.1);
       }
 
       .shop-sidebar.open {
-        display: block
+        transform: translateX(0);
       }
 
       .sidebar-overlay {
-        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .sidebar-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      body.sidebar-open {
+        overflow: hidden;
+      }
+
+      .shop-sidebar .filter-group label {
+        padding: 10px 0;
+        min-height: 44px;
+      }
+
+      .shop-sidebar .filter-group input[type="checkbox"],
+      .shop-sidebar .filter-group input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+
+      .shop-sidebar .sidebar-close-btn {
+        display: block !important;
+      }
+
+      .sidebar-overlay {
+        display: block;
         position: fixed;
         top: 0;
         left: 0;
@@ -2367,10 +2401,6 @@
         height: 100%;
         background: rgba(0, 0, 0, 0.4);
         z-index: 2999
-      }
-
-      .sidebar-overlay.open {
-        display: block
       }
 
       .brand-grid {
